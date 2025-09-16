@@ -1,74 +1,74 @@
-# 🤖 Go2Study Bot - Демонстрация для портфолио
+# 🤖 Go2Study Bot - Portfolio demonstration
 
-**Go2Study Bot** — это многофункциональный Telegram-бот для изучения математики, созданный для подготовки учеников 5-6 классов к экзаменам. Бот использует адаптивную систему обучения и интеграцию с AI для персонализации учебного процесса.
+**Go2Study Bot** — this is a multifunctional Telegram bot for learning mathematics, created to prepare 5th and 6th grade students for exams. The bot uses an adaptive learning system and AI integration to personalize the learning process.
 
-> **Примечание:** Исходный код этого проекта является приватным, так как бот находится в активной эксплуатации (продакшене). Этот репозиторий служит для демонстрации его функционала, архитектуры и технологического стека.
+> **Note:** The source code for this project is private, as the bot is currently in active use (production). This repository serves to demonstrate its functionality, architecture, and technology stack.
 
 ---
 
 ## 🎥 Демонстрация работы
 
-Здесь будет размещена GIF-анимация или короткое видео (15-30 секунд), демонстрирующее основной сценарий использования бота: запуск, выбор темы, прохождение теста и получение результата.
+This section will feature a GIF animation or short video (15-30 seconds) demonstrating the main scenario for using the bot: launching, selecting a topic, taking the test, and receiving the results.
 
 *(Вставьте сюда вашу GIF или видео)*
 
 ---
 
-## ✨ Ключевые возможности
+## ✨ Key features
 
--   🎯 **Адаптивное тестирование**: Система фокусируется на темах, в которых ученик совершает ошибки, предлагая их для повторения.
+-   🎯 **Adaptive testing**: The system focuses on topics where the student makes mistakes, suggesting them for review.
 -   🤖 **Интеграция с AI (Google Gemini)**: 
-    -   Автоматическая генерация объяснений для тестовых вопросов.
-    -   Импорт и обработка вопросов из PDF-файлов.
--   📊 **Аналитика прогресса**: Пользователи могут отслеживать свою успеваемость по различным темам, просматривая статистику пройденных тестов.
--   👥 **Система администрирования**: Полнофункциональная панель для администраторов, позволяющая управлять учениками, темами, вопросами и просматривать общую статистику.
--   🌐 **Многоязычность**: Полная поддержка русского и казахского языков с возможностью переключения "на лету".
--   🔐 **Контроль доступа**: Система на основе "белого списка" (whitelist) гарантирует, что ботом могут пользоваться только авторизованные ученики.
--   🔄 **Работа над ошибками**: Механизмы для повторения и закрепления материала, где были допущены ошибки.
--   💬 **Оптимизированный интерфейс**: Ключевые сообщения в чате (например, "Мой прогресс", "Помощь") не дублируются, а обновляют предыдущие, делая интерфейс чище.
+    -   Automatic generation of explanations for test questions.
+    -   Import and processing of questions from PDF files.
+-   📊 **Progress analytics**: Users can track their progress on various topics by viewing statistics on completed tests.
+-   👥 **Administration system**: A full-featured panel for administrators that allows them to manage students, topics, questions, and view general statistics.
+-   🌐 **Multilingualism**: Full support for Russian and Kazakh languages with the ability to switch between them on the fly.
+-   🔐 **Access control**: A whitelist-based system ensures that only authorized students can use the bot.
+-   🔄 **Working on mistakes**: Mechanisms for repeating and reinforcing material where mistakes were made.
+-   💬 **Optimized interface**: Key messages in the chat (e.g., “My progress,” “Help”) are not duplicated but update previous ones, making the interface cleaner.
 
 ---
 
 ## 🏗️ Архитектура и стек технологий
 
-Проект имеет модульную архитектуру, где каждый компонент отвечает за свою часть логики. Это обеспечивает гибкость и простоту поддержки.
+The project has a modular architecture, where each component is responsible for its own part of the logic. This ensures flexibility and ease of maintenance.
 
-### Схема архитектуры
+### Architecture diagram
 
 ```mermaid
 graph TD
-    A[Пользователь Telegram] --> B{Telegram Bot API};
+    A[Telegram user] --> B{Telegram Bot API};
     B --> C[Python Backend (aiogram)];
-    C --> D{Обработчики команд и колбэков};
-    D --> E[Сервисы (бизнес-логика)];
-    E --> F[База данных (PostgreSQL)];
-    E --> G[AI Модель (Google Gemini API)];
+    C --> D{Command and callback handlers};
+    D --> E[Services (business logic)];
+    E --> F[Database (PostgreSQL)];
+    E --> G[AI Model (Google Gemini API)];
     F --> C;
     G --> C;
 
-    subgraph "Приложение"
+    subgraph “Application”
         C
         D
         E
     end
 ```
 
-### Технологический стек
+### Technology stack
 
--   **Язык программирования**: `Python 3.9`
--   **Основной фреймворк для Telegram**: `python-telegram-bot`
--   **База данных**: `PostgreSQL` (через `SQLAlchemy` и `psycopg2`)
--   **AI интеграция**: `google-generativeai` (Google Gemini)
--   **Веб-сервер для health-check**: `Flask`
--   **Развертывание**: `Docker`, `Railway`
+-   **Programming language**: `Python 3.9`
+-   **Main framework for Telegram**: `python-telegram-bot`
+-   **Database**: `PostgreSQL` (via `SQLAlchemy` and `psycopg2`)
+-   **AI integration**: `google-generativeai` (Google Gemini)
+-   **Web server for health checks**: `Flask`
+-   **Deployment**: `Docker`, `Railway`
 
 ---
 
-## 📄 Пример кода
+## 📄 Example of Code
 
-Ниже представлен фрагмент кода, демонстрирующий обработку команды `/reset`. Эта функция позволяет пользователю сбросить свое текущее состояние (например, если он "застрял" в тесте), что является важной частью отказоустойчивого пользовательского опыта в боте.
+Below is a code snippet demonstrating the processing of the `/reset` command. This function allows the user to reset their current state (for example, if they are “stuck” in a test), which is an important part of a resilient user experience in a bot.
 
-Код написан в асинхронном стиле с использованием библиотеки `python-telegram-bot`.
+The code is written in asynchronous style using the `python-telegram-bot` library.
 
 ```python
 # src/handlers/command_handlers.py
