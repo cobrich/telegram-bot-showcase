@@ -38,7 +38,7 @@ The project has a modular architecture, where each component is responsible for 
 ```mermaid
 graph TD
     A[Telegram user] --> B{Telegram Bot API};
-    B --> C[Python Backend (aiogram)];
+    B --> C["Python Backend (aiogram)"];
     C --> D{Command and callback handlers};
     D --> E[Services (business logic)];
     E --> F[Database (PostgreSQL)];
