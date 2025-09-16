@@ -10,7 +10,7 @@
 
 This section will feature a GIF animation or short video (15-30 seconds) demonstrating the main scenario for using the bot: launching, selecting a topic, taking the test, and receiving the results.
 
-*(Вставьте сюда вашу GIF или видео)*
+*(In near time i will upload video link to youtube)*
 
 ---
 
