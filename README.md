@@ -46,7 +46,7 @@ graph TD
     F --> C;
     G --> C;
 
-    subgraph “Application”
+    subgraph "Application"
         C
         D
         E
