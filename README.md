@@ -6,7 +6,7 @@
 
 ---
 
-## 🎥 Демонстрация работы
+## 🎥 Demonstration of operation
 
 This section will feature a GIF animation or short video (15-30 seconds) demonstrating the main scenario for using the bot: launching, selecting a topic, taking the test, and receiving the results.
 
@@ -17,7 +17,7 @@ This section will feature a GIF animation or short video (15-30 seconds) demonst
 ## ✨ Key features
 
 -   🎯 **Adaptive testing**: The system focuses on topics where the student makes mistakes, suggesting them for review.
--   🤖 **Интеграция с AI (Google Gemini)**: 
+-   🤖 **Integration with AI (Google Gemini)**: 
     -   Automatic generation of explanations for test questions.
     -   Import and processing of questions from PDF files.
 -   📊 **Progress analytics**: Users can track their progress on various topics by viewing statistics on completed tests.
@@ -29,7 +29,7 @@ This section will feature a GIF animation or short video (15-30 seconds) demonst
 
 ---
 
-## 🏗️ Архитектура и стек технологий
+## 🏗️ Architecture and technology stack
 
 The project has a modular architecture, where each component is responsible for its own part of the logic. This ensures flexibility and ease of maintenance.
 
@@ -73,14 +73,14 @@ The code is written in asynchronous style using the `python-telegram-bot` librar
 ```python
 # src/handlers/command_handlers.py
 
-# ... (импорты и инициализация класса)
+# ... (imports and class initialization)
 
 async def reset(self, update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     """Reset user state if stuck in a test."""
     user_id = update.effective_user.id
     user_language = self.db.get_user_language(user_id)
     
-    # Проверяем доступ пользователя
+    # Verifying user access
     if not self.db.check_user_access(user_id, update.effective_user.username):
         await update.message.reply_text(
             get_message('no_access', user_language, 
@@ -89,7 +89,7 @@ async def reset(self, update: Update, context: ContextTypes.DEFAULT_TYPE) -> Non
         )
         return
     
-    # ПРИНУДИТЕЛЬНО очищаем состояние пользователя (даже если он в тесте)
+    # FORCIBLY clear the user's status (even if they are in a test)
     # Clear user activity (is_active status)
     self.db.set_user_inactive(user_id)
     
