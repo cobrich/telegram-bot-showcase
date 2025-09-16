@@ -39,14 +39,14 @@ The project has a modular architecture, where each component is responsible for 
 graph TD
     A[Telegram user] --> B{Telegram Bot API};
     B --> C["Python Backend (aiogram)"];
-    C --> D{Command and callback handlers};
-    D --> E[Services (business logic)];
-    E --> F[Database (PostgreSQL)];
-    E --> G[AI Model (Google Gemini API)];
+    C --> D{"Command and callback handlers"};
+    D --> E["Services (business logic)"];
+    E --> F["Database (PostgreSQL)"];
+    E --> G["AI Model (Google Gemini API)"];
     F --> C;
     G --> C;
 
-    subgraph "Application"
+    subgraph Application
         C
         D
         E
